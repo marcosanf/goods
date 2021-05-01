@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:goodz/app/core/app_text_styles.dart';
 import 'package:goodz/app/core/core.dart';
 
 class SplashPage extends StatelessWidget {
@@ -16,7 +14,7 @@ class SplashPage extends StatelessWidget {
   }
 
   changeScreen() async {
-    Get.toNamed('/login');
+    Get.toNamed('/welcome');
   }
 
   @override
@@ -33,23 +31,10 @@ class SplashPage extends StatelessWidget {
         gradient: AppGradients.linear,
       ),
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              FontAwesomeIcons.box,
-              size: 100.0,
-              color: AppColors.white,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'GOODS',
-                style: AppTextStyles.heading,
-              ),
-            ),
-          ],
+        child: Icon(
+          FontAwesomeIcons.box,
+          size: 80.0,
+          color: AppColors.white,
         ),
       ),
     );

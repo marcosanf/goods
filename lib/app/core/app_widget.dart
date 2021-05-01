@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:goodz/app/modules/home/splash_page.dart';
-import 'package:goodz/app/modules/login/login_page.dart';
+import 'package:goodz/app/modules/login/singin_page.dart';
+import 'package:goodz/app/modules/login/singup_page.dart';
+import 'package:goodz/app/modules/login/welcome_page.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -13,7 +15,9 @@ class AppWidget extends StatelessWidget {
       locale: Locale('pt', 'BR'),
       getPages: [
         GetPage(name: '/', page: () => SplashPage()),
-        GetPage(name: '/login', page: () => LoginPage()),
+        GetPage(name: '/welcome', page: () => WelcomePage()),
+        GetPage(name: '/login', page: () => SigninPage()),
+        GetPage(name: '/singup', page: () => SingupPage()),
       ],
     );
   }
