@@ -9,6 +9,11 @@ class AppTextStyles {
     fontSize: 32.0,
     fontWeight: FontWeight.w600,
   );
+  static final TextStyle heading24 = GoogleFonts.montserrat(
+    color: AppColors.white,
+    fontSize: 24.0,
+    fontWeight: FontWeight.w100,
+  );
   static final TextStyle heading16 = GoogleFonts.montserrat(
     color: AppColors.white,
     fontSize: 16.0,
@@ -18,6 +23,12 @@ class AppTextStyles {
   static final TextStyle titlePurple = GoogleFonts.montserrat(
     color: AppColors.lightPurple,
     fontSize: 18.0,
+    fontWeight: FontWeight.bold,
+  );
+
+  static final TextStyle linkText = GoogleFonts.montserrat(
+    color: AppColors.blue,
+    fontSize: 16.0,
     fontWeight: FontWeight.bold,
   );
 }

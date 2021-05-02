@@ -37,7 +37,7 @@ class WelcomePage extends GetView<WelcomeController> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
                       child: Text(
-                        'Crie um catalógo de produtos gerenciável. Com a Wishlist, selecione os items e envie oraçamentos de forma rápida.',
+                        'Crie um catalógo de produtos gerenciável. Com a Wishlist, selecione os itens e envie oraçamentos de forma rápida.',
                         style: AppTextStyles.heading16,
                         textAlign: TextAlign.center,
                       ),
