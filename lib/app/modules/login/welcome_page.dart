@@ -52,8 +52,8 @@ class WelcomePage extends GetView<WelcomeController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      buildButton('Entrar', '/login'),
-                      buildButton('Criar conta', '/singup'),
+                      buildButton('Entrar', '/signin'),
+                      buildButton('Criar conta', '/signup'),
                     ],
                   ),
                 ),

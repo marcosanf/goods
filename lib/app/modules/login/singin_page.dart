@@ -73,7 +73,7 @@ class SigninPage extends GetView<SigninController> {
                       padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          hintText: 'Password',
+                          hintText: 'Senha',
                           hintStyle: AppTextStyles.heading16,
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
@@ -115,9 +115,14 @@ class SigninPage extends GetView<SigninController> {
                           SizedBox(
                             width: 4.0,
                           ),
-                          Text(
-                            'Cadastre-se',
-                            style: AppTextStyles.linkText,
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed('/signup');
+                            },
+                            child: Text(
+                              'Cadastre-se',
+                              style: AppTextStyles.linkText,
+                            ),
                           ),
                         ],
                       ),

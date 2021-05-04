@@ -16,8 +16,8 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => SplashPage()),
         GetPage(name: '/welcome', page: () => WelcomePage()),
-        GetPage(name: '/login', page: () => SigninPage()),
-        GetPage(name: '/singup', page: () => SingupPage()),
+        GetPage(name: '/signin', page: () => SigninPage()),
+        GetPage(name: '/signup', page: () => SignupPage()),
       ],
     );
   }
