@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:goodz/app/modules/home/splash_page.dart';
+import 'package:goodz/app/modules/login/singin_controller.dart';
 import 'package:goodz/app/modules/login/singin_page.dart';
+import 'package:goodz/app/modules/login/singup_controller.dart';
 import 'package:goodz/app/modules/login/singup_page.dart';
 import 'package:goodz/app/modules/login/welcome_page.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final userController = Get.put<SingupController>(SingupController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

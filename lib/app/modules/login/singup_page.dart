@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:goodz/app/core/app_text_styles.dart';
 import 'package:goodz/app/core/core.dart';
+import 'package:goodz/app/model/user.dart';
 import 'package:goodz/app/modules/login/singup_controller.dart';
 
 class SignupPage extends GetView<SingupController> {
@@ -37,6 +38,7 @@ class SignupPage extends GetView<SingupController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
+                      key: controller.signUpFormKey,
                       padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
                       child: TextFormField(
                         decoration: InputDecoration(
@@ -61,6 +63,11 @@ class SignupPage extends GetView<SingupController> {
                           ),
                         ),
                         keyboardType: TextInputType.emailAddress,
+                        controller: controller.emailController,
+                        onSaved: (value) {
+                          controller.email = value!;
+                        },
+                        validator: (value) => controller.validateEmail(value!),
                       ),
                     ),
                     SizedBox(
@@ -90,6 +97,10 @@ class SignupPage extends GetView<SingupController> {
                           ),
                         ),
                         keyboardType: TextInputType.text,
+                        controller: controller.usernameController,
+                        onSaved: (value) {
+                          controller.username = value!;
+                        },
                       ),
                     ),
                     SizedBox(
@@ -120,6 +131,12 @@ class SignupPage extends GetView<SingupController> {
                         ),
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: true,
+                        controller: controller.passwordController,
+                        onSaved: (value) {
+                          controller.password = value!;
+                        },
+                        validator: (value) =>
+                            controller.validatePassword(value!),
                       ),
                     )
                   ],
@@ -157,19 +174,24 @@ class SignupPage extends GetView<SingupController> {
                     SizedBox(
                       height: 24.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
-                      child: Container(
-                        height: 70.0,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Center(
-                            child: Text(
-                          'Entrar',
-                          style: AppTextStyles.titlePurple,
-                        )),
+                    GestureDetector(
+                      onTap: () {
+                        controller.adduser(controller.user);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
+                        child: Container(
+                          height: 70.0,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: Center(
+                              child: Text(
+                            'Entrar',
+                            style: AppTextStyles.titlePurple,
+                          )),
+                        ),
                       ),
                     ),
                   ],
