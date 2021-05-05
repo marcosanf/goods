@@ -130,19 +130,24 @@ class SigninPage extends GetView<SigninController> {
                     SizedBox(
                       height: 24.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
-                      child: Container(
-                        height: 70.0,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Center(
-                            child: Text(
-                          'Entrar',
-                          style: AppTextStyles.titlePurple,
-                        )),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed('/home');
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
+                        child: Container(
+                          height: 55.0,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: Center(
+                              child: Text(
+                            'Entrar',
+                            style: AppTextStyles.titlePurple,
+                          )),
+                        ),
                       ),
                     ),
                   ],
