@@ -9,6 +9,7 @@ class SignupPage extends GetView<SingupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           decoration: BoxDecoration(gradient: AppGradients.linear),
@@ -34,112 +35,116 @@ class SignupPage extends GetView<SingupController> {
               ),
               Expanded(
                 flex: 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      key: controller.signUpFormKey,
-                      padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Email',
-                          fillColor: AppColors.white,
-                          hintStyle: AppTextStyles.heading16,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: AppColors.blue,
+                child: Form(
+                  //key: controller.signUpFormKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
+                        child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              hintText: 'Email',
+                              fillColor: AppColors.white,
+                              hintStyle: AppTextStyles.heading16,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(
+                                  color: AppColors.blue,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(
+                                  color: AppColors.white,
+                                ),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: AppColors.white,
+                              ),
                             ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: controller.emailController,
+                            onSaved: (value) {
+                              controller.email = value!;
+                            },
+                            validator: (value) {
+                              return controller.validateEmail(value!);
+                            }),
+                      ),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            hintText: 'Nome de usuário',
+                            hintStyle: AppTextStyles.heading16,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: AppColors.blue,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: AppColors.white,
+                              ),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.person,
                               color: AppColors.white,
                             ),
                           ),
-                          prefixIcon: Icon(
-                            Icons.email,
-                            color: AppColors.white,
-                          ),
+                          keyboardType: TextInputType.text,
+                          controller: controller.usernameController,
+                          onSaved: (value) {
+                            controller.username = value!;
+                          },
                         ),
-                        keyboardType: TextInputType.emailAddress,
-                        controller: controller.emailController,
-                        onSaved: (value) {
-                          controller.email = value!;
-                        },
-                        validator: (value) => controller.validateEmail(value!),
                       ),
-                    ),
-                    SizedBox(
-                      height: 16.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Nome de usuário',
-                          hintStyle: AppTextStyles.heading16,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: AppColors.blue,
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            hintText: 'Senha',
+                            hintStyle: AppTextStyles.heading16,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: AppColors.blue,
+                              ),
                             ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: AppColors.white,
+                              ),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.lock,
                               color: AppColors.white,
                             ),
                           ),
-                          prefixIcon: Icon(
-                            Icons.person,
-                            color: AppColors.white,
-                          ),
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: true,
+                          controller: controller.passwordController,
+                          onSaved: (value) {
+                            controller.password = value!;
+                          },
+                          validator: (value) =>
+                              controller.validatePassword(value!),
                         ),
-                        keyboardType: TextInputType.text,
-                        controller: controller.usernameController,
-                        onSaved: (value) {
-                          controller.username = value!;
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Senha',
-                          hintStyle: AppTextStyles.heading16,
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: AppColors.blue,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: AppColors.white,
-                            ),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: AppColors.white,
-                          ),
-                        ),
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
-                        controller: controller.passwordController,
-                        onSaved: (value) {
-                          controller.password = value!;
-                        },
-                        validator: (value) =>
-                            controller.validatePassword(value!),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -181,7 +186,7 @@ class SignupPage extends GetView<SingupController> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
                         child: Container(
-                          height: 70.0,
+                          height: 55.0,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               color: AppColors.white,
