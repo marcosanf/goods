@@ -72,7 +72,7 @@ class WelcomePage extends GetView<WelcomeController> {
         Get.toNamed(route);
       },
       child: Container(
-        height: 70.0,
+        height: 55.0,
         width: 165.0,
         decoration: BoxDecoration(
           color: AppColors.white,
