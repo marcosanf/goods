@@ -19,6 +19,7 @@ class AppColors {
   static final Color ciano = Color(0xFF62D7E7);
   static final Color green2 = Color(0xFF5EFFE6);
   static final Color greenAccent = Color(0xFF5BF5B1);
+  static final Color mainPurple = Color(0xFF9055FF);
 
   //Greens
   static final Color lightGreen = Color(0xFFE1F5EC);
