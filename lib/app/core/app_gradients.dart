@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class AppGradients {
   static final linear = LinearGradient(colors: [
-    Color.fromRGBO(67, 48, 174, 0.75),
-    Color.fromRGBO(69, 48, 179, 1),
+    Color(0xFF9055FF),
+    Color.fromRGBO(19, 226, 217, 0.695),
   ], stops: [
     0.0,
     0.695

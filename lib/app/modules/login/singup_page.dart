@@ -50,9 +50,8 @@ class SignupPage extends GetView<SingupController> {
                               hintStyle: AppTextStyles.heading16,
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20.0),
-                                borderSide: BorderSide(
-                                  color: AppColors.blue,
-                                ),
+                                borderSide:
+                                    BorderSide(color: Colors.blueAccent),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20.0),
@@ -85,9 +84,7 @@ class SignupPage extends GetView<SingupController> {
                             hintStyle: AppTextStyles.heading16,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
-                              borderSide: BorderSide(
-                                color: AppColors.blue,
-                              ),
+                              borderSide: BorderSide(color: Colors.blueAccent),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
@@ -119,7 +116,7 @@ class SignupPage extends GetView<SingupController> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(
-                                color: AppColors.blue,
+                                color: Colors.blueAccent,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(

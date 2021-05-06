@@ -49,7 +49,7 @@ class SigninPage extends GetView<SigninController> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(
-                              color: AppColors.blue,
+                              color: Colors.blueAccent,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
@@ -78,7 +78,7 @@ class SigninPage extends GetView<SigninController> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(
-                              color: AppColors.blue,
+                              color: Colors.blueAccent,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
