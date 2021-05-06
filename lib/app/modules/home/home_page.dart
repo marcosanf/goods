@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:goodz/app/core/app_colors.dart';
+import 'package:goodz/app/modules/home/widgets/app_bar_widget.dart';
+import 'package:goodz/app/modules/home/widgets/product_form_widget.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -10,79 +12,115 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: Text('HomePage')),
+      appBar: AppBarWidget(),
       body: controller.products.isNotEmpty
           ? GetBuilder(
               builder: (HomeController homeController) {
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemCount: controller.products.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.blue,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
+                return Container(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Text('Meus produtos'),
+                      ),
+                      Expanded(
+                        flex: 12,
+                        child: GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          itemCount: controller.products.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    homeController.products[index].amount
-                                        .toString(),
-                                  ),
-                                  Text(
-                                    homeController.products[index].price
-                                        .toString(),
-                                  ),
-                                ],
+                              child: Container(
+                                height: 210,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(25),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: AppColors.border,
+                                        offset: Offset(1, 2),
+                                      ),
+                                    ]),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            homeController
+                                                .products[index].amount
+                                                .toString(),
+                                          ),
+                                          Text(
+                                            homeController.products[index].price
+                                                .toString(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Icon(FontAwesomeIcons.boxes),
+                                    Column(
+                                      children: [
+                                        Text(homeController
+                                            .products[index].name!),
+                                        Text(homeController
+                                            .products[index].code!),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Icon(FontAwesomeIcons.heart),
+                                          GestureDetector(
+                                            onTap: () => controller
+                                                .deleteProduct(controller
+                                                    .products[index].id!),
+                                            child: Icon(
+                                                FontAwesomeIcons.solidTrashAlt),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Icon(FontAwesomeIcons.boxes),
-                            Column(
-                              children: [
-                                Text(homeController.products[index].name!),
-                                Text(homeController.products[index].code!),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(FontAwesomeIcons.heart),
-                                  GestureDetector(
-                                    onTap: () => controller.deleteProduct(
-                                        controller.products[index].id!),
-                                    child: Icon(FontAwesomeIcons.solidTrashAlt),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
                       ),
-                    );
-                  },
+                    ],
+                  ),
                 );
               },
             )
-          : Container(),
+          : Container(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.boxOpen,
+                      color: AppColors.purple,
+                      size: 100.0,
+                    ),
+                    Text('Você não possui produtos cadastrados!')
+                  ],
+                ),
+              ),
+            ),
       floatingActionButton: FloatingActionButton(
-        //onPressed: () => controller.addProduct(Product(
-        //    amount: 50,
-        //    code: 'RXK-567',
-        //    name: 'Placa de Vídeo',
-        //    price: 699.90)),
         onPressed: () {
           showModalBottomSheet(
               isScrollControlled: true,
@@ -90,44 +128,11 @@ class HomePage extends GetView<HomeController> {
               builder: (context) {
                 return Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: buildForm(),
+                  child: ProductForm(),
                 );
               });
         },
         child: Icon(FontAwesomeIcons.plus),
-      ),
-    );
-  }
-
-  Form buildForm() {
-    return Form(
-      key: controller.productForm,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text('Adicione um produto'),
-            TextFormField(
-              decoration: InputDecoration(hintText: 'Nome do produto'),
-            ),
-            TextFormField(
-              decoration: InputDecoration(hintText: 'Preço'),
-            ),
-            TextFormField(
-              decoration: InputDecoration(hintText: 'Quantidade'),
-            ),
-            TextFormField(
-              decoration: InputDecoration(hintText: 'Código do produto'),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text('Cadastrar'),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(AppColors.lightPurple),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }
