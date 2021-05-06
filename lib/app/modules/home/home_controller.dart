@@ -14,10 +14,10 @@ class HomeController extends GetxController {
       amountController,
       codeController;
 
-  var name = '';
-  var price;
-  var amount;
-  var code = '';
+  String name = '';
+  late double price;
+  late int amount;
+  String code = '';
   Product product = Product();
 
   void onInit() {
@@ -46,16 +46,30 @@ class HomeController extends GetxController {
     update();
   }
 
+  updateProduct() {}
+
   String? validateProduct(String value) {
-    if (value == null) {
+    if (value.isEmpty) {
       return 'Informe o nome do produto';
     }
   }
 
   String? validateCode(String value) {
-    if (value == null) {
+    if (value.isEmpty) {
       return 'Informe o código do produto';
     }
+  }
+
+  void resetForm() {
+    productForm.currentState!.reset();
+    nameController.clear();
+    priceController.clear();
+    amountController.clear();
+    codeController.clear();
+  }
+
+  void validateRegister() {
+    productForm.currentState!.validate();
   }
 
   void onClose() {
