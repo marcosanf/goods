@@ -14,6 +14,7 @@ class HomeController extends GetxController {
       amountController,
       codeController;
 
+  double yTransValue = 0;
   String name = '';
   late double price;
   late int amount;
@@ -21,11 +22,19 @@ class HomeController extends GetxController {
   Product product = Product();
 
   void onInit() {
-    super.onInit();
     nameController = TextEditingController();
     priceController = TextEditingController();
     amountController = TextEditingController();
     codeController = TextEditingController();
+    super.onInit();
+  }
+
+  void onClose() {
+    nameController.dispose();
+    priceController.dispose();
+    amountController.dispose();
+    codeController.dispose();
+    super.onClose();
   }
 
   HomeController() {
@@ -70,12 +79,5 @@ class HomeController extends GetxController {
 
   void validateRegister() {
     productForm.currentState!.validate();
-  }
-
-  void onClose() {
-    nameController.dispose();
-    priceController.dispose();
-    amountController.dispose();
-    codeController.dispose();
   }
 }
