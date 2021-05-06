@@ -15,17 +15,18 @@ class AppTextStyles {
     fontWeight: FontWeight.w100,
   );
   static final TextStyle heading16 = GoogleFonts.montserrat(
-    color: AppColors.white,
+    color: AppColors.black,
     fontSize: 16.0,
     fontWeight: FontWeight.w300,
   );
 
   static final TextStyle titlePurple = GoogleFonts.montserrat(
-    color: Colors.purple,
+    color: AppColors.mainPurple,
     fontSize: 18.0,
+    fontWeight: FontWeight.bold,
   );
   static final TextStyle linkText = GoogleFonts.montserrat(
-    color: Colors.blueAccent,
+    color: AppColors.mainPurple,
     fontSize: 16.0,
     fontWeight: FontWeight.bold,
   );
@@ -34,13 +35,13 @@ class AppTextStyles {
   ///
   ///
 
-  static final TextStyle title = GoogleFonts.notoSans(
+  static final TextStyle title = GoogleFonts.montserrat(
     color: AppColors.white,
     fontSize: 20,
     fontWeight: FontWeight.w400,
   );
 
-  static final TextStyle titleBold = GoogleFonts.notoSans(
+  static final TextStyle titleBold = GoogleFonts.montserrat(
     color: AppColors.white,
     fontSize: 20,
     fontWeight: FontWeight.w600,
