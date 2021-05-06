@@ -9,29 +9,34 @@ class SingupController extends GetxController {
 
   final GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
   late List<UserModel> _users;
+  List<UserModel> get users => _users;
   late Box<UserModel> userBox;
   late TextEditingController emailController,
       usernameController,
       passwordController;
 
-  var email = '';
-  var username = '';
-  var password = '';
+  String email = '';
+  String username = '';
+  String password = '';
   UserModel user = UserModel();
 
   void onInit() {
-    super.onInit();
     emailController = TextEditingController();
     usernameController = TextEditingController();
     passwordController = TextEditingController();
+    super.onInit();
   }
 
-  List<UserModel> get users => _users;
+  void onClose() {
+    emailController.dispose();
+    usernameController.dispose();
+    passwordController.dispose();
+    super.onClose();
+  }
 
-  // ignore: non_constant_identifier_names
-  SignUpController() {
+  SingupController() {
     userBox = Hive.box<UserModel>('users');
-    _users = [];
+    _users = <UserModel>[];
     for (int i = 0; i < userBox.values.length; i++) {
       _users.add(userBox.getAt(i)!);
     }
@@ -58,15 +63,22 @@ class SingupController extends GetxController {
     user.username = username;
     user.password = password;
     _users.add(user);
-    print(user.email);
-    print(user.username);
-    print(user.password);
+    userBox.add(user);
     update();
   }
 
-  void onClose() {
-    emailController.dispose();
-    usernameController.dispose();
-    passwordController.dispose();
+  void resetForm() {
+    signUpFormKey.currentState!.reset();
+    emailController.clear();
+    usernameController.clear();
+    passwordController.clear();
+  }
+
+  void createUser() {
+    signUpFormKey.currentState!.save();
+    adduser(user);
+    Get.toNamed("/home");
+    print(userBox.length.toString());
+    resetForm();
   }
 }

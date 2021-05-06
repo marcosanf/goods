@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:goodz/app/core/app_text_styles.dart';
 import 'package:goodz/app/core/core.dart';
-import 'package:goodz/app/model/user.dart';
 import 'package:goodz/app/modules/login/singup_controller.dart';
 
 class SignupPage extends GetView<SingupController> {
   @override
   Widget build(BuildContext context) {
+    //WidgetsFlutterBinding.ensureInitialized();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
@@ -36,7 +36,7 @@ class SignupPage extends GetView<SingupController> {
               Expanded(
                 flex: 3,
                 child: Form(
-                  //key: controller.signUpFormKey,
+                  key: controller.signUpFormKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -178,7 +178,7 @@ class SignupPage extends GetView<SingupController> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        controller.adduser(controller.user);
+                        controller.createUser();
                       },
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(28.0, 0, 28.0, 0),
