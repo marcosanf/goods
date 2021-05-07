@@ -23,11 +23,11 @@ class AppBarWidget extends PreferredSize {
                       Text.rich(
                         TextSpan(
                           text: "Olá, ",
-                          style: AppTextStyles.heading2,
+                          style: AppTextStyles.title,
                           children: [
                             TextSpan(
                               text: "Marcos",
-                              style: AppTextStyles.heading2,
+                              style: AppTextStyles.title,
                             )
                           ],
                         ),
