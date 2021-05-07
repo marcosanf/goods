@@ -99,8 +99,8 @@ class AppTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
-  static final TextStyle bodyLightGrey20 = GoogleFonts.montserrat(
-    color: AppColors.lightGrey,
+  static final TextStyle bodyGrey20 = GoogleFonts.montserrat(
+    color: AppColors.grey,
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
@@ -110,9 +110,9 @@ class AppTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
-  static final TextStyle body11 = GoogleFonts.montserrat(
+  static final TextStyle body12 = GoogleFonts.montserrat(
     color: AppColors.grey,
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: FontWeight.normal,
   );
 }
